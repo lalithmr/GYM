@@ -17,14 +17,14 @@ export default function Hero() {
         </h1>
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1200px] px-6 lg:px-10 pt-[320px] md:pt-[380px] lg:pt-[220px] xl:pt-[210px] pb-[20px] lg:pb-[30px] flex flex-col items-center">
+      <div className="relative z-10 mx-auto w-full max-w-[1200px] px-[24px] pt-[320px] md:pt-[380px] lg:pt-[220px] xl:pt-[210px] pb-[20px] lg:pb-[30px] flex flex-col items-center">
 
         {/* Main Layout Grid */}
         <div className="flex flex-col xl:grid xl:grid-cols-[1fr_minmax(450px,580px)_1fr] lg:grid lg:grid-cols-[1fr_minmax(320px,460px)_1fr] w-full items-end gap-x-0 lg:gap-x-4 xl:gap-x-0 relative z-20">
-          
+
           {/* Mobile Wrapper for Side-by-Side Content */}
           <div className="order-2 lg:contents flex flex-row items-center justify-between sm:justify-around w-full gap-4 mt-8 lg:mt-0 px-2 lg:px-0 z-20">
-            
+
             {/* Left Content (Row 1, Col 1) */}
             <div className="flex flex-col items-start lg:items-start text-left lg:text-left z-20 pb-0 lg:pb-12 xl:pb-12 min-w-0 lg:col-start-1 lg:row-start-1 lg:pt-[200px] xl:pt-[240px] self-start">
               <h2 className="text-[clamp(24px,3.5vw,52px)] md:text-[clamp(28px,3.5vw,52px)] font-semibold leading-[1.1] lg:leading-[1.2] xl:leading-[60px] text-black">
@@ -59,7 +59,7 @@ export default function Hero() {
 
           {/* Right Content - Desktop (Unified Bowl, Arrow & Text) */}
           <div className="hidden lg:flex order-none lg:col-start-3 lg:row-start-1 flex-col items-center justify-start text-center w-full z-20 pt-0 lg:pt-[200px] xl:pt-[240px] px-2 opacity-0 animate-[fadeIn_1.2s_ease-out_forwards] self-start">
-            
+
             {/* Diet Bowl Image */}
             <div className="w-[220px] h-[220px] rounded-full overflow-hidden shadow-[0_15px_30px_rgba(0,0,0,0.2)] flex-shrink-0 border-4 border-[#DCFB46]/20 transition-transform duration-500 hover:scale-105">
               <img src={foodImage} alt="Expert diet bowl" className="h-full w-full object-cover" />
@@ -81,7 +81,7 @@ export default function Hero() {
           {/* Grey Box (Row 2, Col 2) */}
           <div className="order-4 lg:order-none lg:col-start-2 lg:row-start-2 bg-[#BBBBBB]/[0.55] pt-12 pb-10 px-4 xl:px-6 min-w-0 w-full relative z-50 mt-8 lg:mt-0 flex flex-col justify-center">
             <p className="text-[clamp(16px,1.8vw,24px)] font-medium leading-[1.3] text-black text-center mb-8 xl:mb-10 max-w-[500px] mx-auto">
-              Join our community and be the best <br className="hidden lg:block"/> form of your life
+              Join our community and be the best <br className="hidden lg:block" /> form of your life
             </p>
 
             <div className="flex flex-col md:flex-row items-center justify-center w-full mx-auto divide-y-2 md:divide-y-0 md:divide-x-2 divide-[#DCFB46]">

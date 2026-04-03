@@ -76,7 +76,7 @@ function ServiceCard({ service, index }) {
 
 export default function OurServices() {
   return (
-    <section className="w-full bg-[#BBBBBB] font-['Poppins'] py-[20px] lg:py-[30px] px-6 lg:px-10 overflow-hidden text-center">
+    <section className="w-full bg-[#BBBBBB] font-['Poppins'] py-[20px] lg:py-[30px] px-[24px] overflow-hidden text-center">
       <div className="mx-auto w-full max-w-[1440px] flex flex-col items-center">
         
         {/* Header Block precisely centered with smooth text rendering constraints */}

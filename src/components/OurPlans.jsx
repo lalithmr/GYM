@@ -134,7 +134,7 @@ function PlanCard({ plan }) {
 export default function OurPlans() {
   return (
     <section className="w-full flex justify-center bg-[#BBBBBB] py-[20px] xl:py-[30px] overflow-hidden">
-      <div className="w-full max-w-[1440px] flex flex-col items-center px-4 xl:px-8">
+      <div className="w-full max-w-[1440px] flex flex-col items-center px-[24px]">
         {/* Heading */}
         <div className="pt-[20px] text-center">
           <h2 className="text-[18px] font-bold">

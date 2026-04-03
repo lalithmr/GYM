@@ -55,8 +55,8 @@ function Card({ item, active, setHover, clearHover, refProp }) {
       onMouseEnter={setHover}
       onMouseLeave={clearHover}
       className={`relative shrink-0 rounded-[30px] border-2 border-black bg-[#BBBBBB] px-[30px] py-[40px] cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform ${active
-          ? "w-[650px] h-[250px] scale-100 opacity-100 z-20 shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
-          : "w-[528px] h-[203px] scale-[0.85] opacity-50 blur-[1px] z-10"
+        ? "w-[650px] h-[250px] scale-100 opacity-100 z-20 shadow-[0_20px_40px_rgba(0,0,0,0.15)]"
+        : "w-[528px] h-[203px] scale-[0.85] opacity-50 blur-[1px] z-10"
         }`}
     >
       <Shapes active={active} />
@@ -156,7 +156,7 @@ export default function Testimonials() {
 
   return (
     <section className="w-full bg-[#BBBBBB] py-[50px] overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-[24px]">
 
         {/* HEADER */}
         <div className="relative flex justify-center mb-[60px]">
