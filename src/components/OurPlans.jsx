@@ -73,11 +73,10 @@ function PlanCard({ plan }) {
   return (
     <div className="relative flex items-end justify-center w-[340px] sm:w-[389px] h-[510px] sm:h-[584px] z-0 hover:z-20 shrink-0">
       <article
-        className={`group absolute bottom-0 flex h-[638px] w-[425px] origin-bottom flex-col items-center rounded-[22px] border-2 bg-[#BBBBBB] px-[26px] pb-[28px] pt-[22px] font-poppins transition-transform duration-300 ease-in-out scale-[0.8] sm:scale-[0.9153] hover:scale-100 ${
-          plan.highlighted
+        className={`group absolute bottom-0 flex h-[638px] w-[425px] origin-bottom flex-col items-center rounded-[22px] border-2 bg-[#BBBBBB] px-[26px] pb-[28px] pt-[22px] font-poppins transition-transform duration-300 ease-in-out scale-[0.8] sm:scale-[0.9153] hover:scale-[0.84] sm:hover:scale-[0.96] xl:hover:scale-100 ${plan.highlighted
             ? "border-black shadow-[0_14px_32px_rgba(0,0,0,0.06)] z-10"
             : "border-black z-0"
-        } hover:border-[#DCFB46]`}
+          } hover:border-[#DCFB46]`}
       >
         {/* Package */}
         <span className="text-[13px] font-medium text-black">Package</span>

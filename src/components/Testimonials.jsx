@@ -84,6 +84,7 @@ export default function Testimonials() {
   const [active, setActive] = useState(START_INDEX);
   const [hover, setHover] = useState(null);
   const [pause, setPause] = useState(false);
+  const [showAll, setShowAll] = useState(false);
 
   // SET INITIAL POSITION (CENTER)
   useEffect(() => {
@@ -98,7 +99,7 @@ export default function Testimonials() {
 
   // CONTINUOUS SCROLL WITH INFINITE LOOP
   useEffect(() => {
-    if (pause) return;
+    if (pause || showAll) return;
 
     const el = containerRef.current;
     let frame;
@@ -159,9 +160,12 @@ export default function Testimonials() {
       <div className="max-w-[1440px] mx-auto px-[24px]">
 
         {/* HEADER */}
-        <div className="relative flex justify-center mb-[60px]">
+        <div className="flex flex-col lg:flex-row items-center justify-between mb-[60px] gap-8 lg:gap-0 relative">
+          
+          {/* Spacer block for perfect center alignment on desktop */}
+          <div className="hidden lg:flex lg:flex-1"></div>
 
-          <div className="text-center max-w-[700px]">
+          <div className="text-center max-w-[700px] shrink-0">
             <h2 className="text-[20px] font-bold font-['Poppins']">
               <span className="text-[#DCFB46]">Our </span>
               <span>Testimonials</span>
@@ -173,64 +177,85 @@ export default function Testimonials() {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="absolute right-0 flex items-center gap-[16px]">
-
-            <button className="text-[20px] font-normal font-['Poppins'] border-b border-black hover:opacity-70">
-              VIEW ALL
+          <div className="flex items-center justify-center lg:justify-end lg:flex-1 gap-[16px] w-full lg:w-auto">
+            <button 
+              onClick={() => setShowAll(!showAll)}
+              className="text-[16px] font-medium font-['Poppins'] border-b border-black hover:opacity-70 mt-1 whitespace-nowrap"
+            >
+              {showAll ? "HIDE ALL" : "VIEW ALL"}
             </button>
 
-            <div className="flex gap-[8px]">
+            {!showAll && (
+              <div className="flex gap-[8px]">
+                <button
+                  onClick={() => {
+                    setPause(true);
+                    containerRef.current.scrollBy({ left: -650, behavior: "smooth" });
+                    setTimeout(() => setPause(false), 600);
+                  }}
+                  className="w-[36px] h-[36px] rounded-full border-2 border-black flex items-center justify-center hover:bg-black group transition shrink-0"
+                >
+                  <svg viewBox="0 0 24 24" stroke="#DCFB46" strokeWidth="2.5" fill="none">
+                    <path d="M15 18l-6-6 6-6" />
+                  </svg>
+                </button>
 
-              <button
-                onClick={() =>
-                  containerRef.current.scrollBy({ left: -650, behavior: "smooth" })
-                }
-                className="w-[36px] h-[36px] rounded-full border-2 border-black flex items-center justify-center hover:bg-black group transition"
-              >
-                <svg viewBox="0 0 24 24" stroke="#DCFB46" strokeWidth="2.5" fill="none">
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              </button>
-
-              <button
-                onClick={() =>
-                  containerRef.current.scrollBy({ left: 650, behavior: "smooth" })
-                }
-                className="w-[36px] h-[36px] rounded-full border-2 border-black flex items-center justify-center hover:bg-black group transition"
-              >
-                <svg viewBox="0 0 24 24" stroke="#DCFB46" strokeWidth="2.5" fill="none">
-                  <path d="M9 6l6 6-6 6" />
-                </svg>
-              </button>
-
-            </div>
+                <button
+                  onClick={() => {
+                    setPause(true);
+                    containerRef.current.scrollBy({ left: 650, behavior: "smooth" });
+                    setTimeout(() => setPause(false), 600);
+                  }}
+                  className="w-[36px] h-[36px] rounded-full border-2 border-black flex items-center justify-center hover:bg-black group transition shrink-0"
+                >
+                  <svg viewBox="0 0 24 24" stroke="#DCFB46" strokeWidth="2.5" fill="none">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* CAROUSEL */}
-        <div
-          ref={containerRef}
-          className="flex gap-[24px] overflow-x-hidden justify-center px-[300px]"
-          style={{
-            maskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
-          }}
-          onMouseEnter={() => setPause(true)}
-          onMouseLeave={() => {
-            setPause(false);
-            setHover(null);
-          }}
-        >
-          {data.map((item, i) => (
-            <Card
-              key={i}
-              item={item}
-              active={hover === i || active === i}
-              setHover={() => setHover(i)}
-              clearHover={() => setHover(null)}
-              refProp={(el) => (refs.current[i] = el)}
-            />
-          ))}
-        </div>
+        {/* CAROUSEL OR LIST */}
+        {showAll ? (
+          <div className="flex flex-col gap-[30px] items-center pb-10">
+            {testimonials.map((item, i) => (
+              <Card
+                key={i}
+                item={item}
+                active={true}
+                setHover={() => {}}
+                clearHover={() => {}}
+                refProp={null}
+              />
+            ))}
+          </div>
+        ) : (
+          <div
+            ref={containerRef}
+            className="flex gap-[24px] overflow-x-hidden justify-center px-[300px]"
+            style={{
+              maskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
+            }}
+            onMouseEnter={() => setPause(true)}
+            onMouseLeave={() => {
+              setPause(false);
+              setHover(null);
+            }}
+          >
+            {data.map((item, i) => (
+              <Card
+                key={i}
+                item={item}
+                active={hover === i || active === i}
+                setHover={() => setHover(i)}
+                clearHover={() => setHover(null)}
+                refProp={(el) => (refs.current[i] = el)}
+              />
+            ))}
+          </div>
+        )}
 
       </div>
     </section>
